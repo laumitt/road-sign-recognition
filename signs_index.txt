@@ -22,7 +22,6 @@ img21,circular intersection ahead
 img22,traffic may flow on both sides of sign
 img23,deer crossing
 img24,railroad crossing ahead
-img25,maximum height
 img26,added lane
 img27,stop
 img28,yield
