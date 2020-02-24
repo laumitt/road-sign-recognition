@@ -35,3 +35,10 @@ img34,no pedestrians
 img35,no bicycles
 img36,all traffic must go left
 img37,keep to the right of the upcoming median or lane
+img38,parking facilities
+img39,picnic area
+img40,access for those with disabilities
+img41,hospital
+img42,information
+img43,telephone
+img44,gas
