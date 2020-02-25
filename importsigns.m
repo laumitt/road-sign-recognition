@@ -4,7 +4,7 @@
 
 scale = 0.25;
 num_pixels = (256*scale)^2;
-num_signs = 10;
+num_signs = 25;
 transfer = [scale num_pixels num_signs];
 
 % training data
