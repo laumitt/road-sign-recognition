@@ -1,44 +1,44 @@
-img01,school zone
-img02,lane merging from right, watch for other traffic
-img03,divided highway begins
-img04,winding road, multiple curves ahead
-img05,road turns right
-img06,school crossing
-img07,playground
-img08,divided highway ends
-img09,crossroad ahead
-img10,road curves right
-img11,pedestrian crossing
-img12,stop ahead
-img13,two-way traffic
-img14,road entering from right
-img15,area off paved road is soft dirt - hazardous
-img16,traffic signal ahead
-img17,right lane end - road narrows
-img18,road slippery when wet
-img19,road ends at junction
-img20,you may not cross the yellow line
-img21,circular intersection ahead
-img22,traffic may flow on both sides of sign
-img23,deer crossing
-img24,railroad crossing ahead
-img25,maximum height
-img26,added lane
-img27,stop
-img28,yield
-img29,do not enter
-img30,no right turn
-img31,no left turn
-img32,no u turn
-img33,no trucks
-img34,no pedestrians
-img35,no bicycles
-img36,all traffic must go left
-img37,keep to the right of the upcoming median or lane
-img38,parking facilities
-img39,picnic area
-img40,access for those with disabilities
-img41,hospital
-img42,information
-img43,telephone
+img1,school zone,
+img2,lane merging from right,
+img3,divided highway begins,
+img4,winding road,
+img5,road turns right,
+img6,school crossing,
+img7,playground,
+img8,divided highway ends,
+img9,crossroad ahead,
+img10,road curves right,
+img11,pedestrian crossing,
+img12,stop ahead,
+img13,two-way traffic,
+img14,road entering from right,
+img15,soft shoulder,
+img16,traffic signal ahead,
+img17,right lane end,
+img18,road slippery when wet,
+img19,road ends at junction,
+img20,no passing zone,
+img21,traffic circle ahead,
+img22,traffic on both sides,
+img23,deer crossing,
+img24,railroad crossing,
+img25,maximum height,
+img26,added lane,
+img27,stop,
+img28,yield,
+img29,do not enter,
+img30,no right turn,
+img31,no left turn,
+img32,no u turn,
+img33,no trucks,
+img34,no pedestrians,
+img35,no bicycles,
+img36,left only,
+img37,keep right,
+img38,parking,
+img39,picnic area,
+img40,accessible,
+img41,hospital,
+img42,information,
+img43,telephone,
 img44,gas

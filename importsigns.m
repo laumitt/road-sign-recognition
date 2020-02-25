@@ -5,12 +5,13 @@
 scale = 0.25;
 num_pixels = (256*scale)^2;
 num_signs = 10;
+transfer = [scale num_pixels num_signs];
 
 % training data
 train_data = ones(num_pixels,num_signs);
 for img_num = 1:num_signs
 	% Create an image filename, and read it in to a variable called imageData.
-	train_file = strcat('Signs\img', num2str(img_num), '.png');
+	train_file = strcat('Signs\train\img', num2str(img_num), '.png');
 	if exist(train_file, 'file')
 		img = imread(train_file);
         img_gray = (0.2989*img(:,:,1)) + (0.5870*img(:,:,2)) + (0.1140*img(:,:,3));
@@ -28,7 +29,7 @@ end
 test_data = ones(num_pixels,num_signs);
 for img_num = 1:num_signs
 	% Create an image filename, and read it in to a variable called imageData.
-	test_file = strcat('Signs\img', num2str(img_num), '.png');
+	test_file = strcat('Signs\test\test', num2str(img_num), '.png');
 	if exist(test_file, 'file')
 		img = imread(test_file);
         img_gray = (0.2989*img(:,:,1)) + (0.5870*img(:,:,2)) + (0.1140*img(:,:,3));
@@ -42,4 +43,4 @@ for img_num = 1:num_signs
     end
 end
 
-save signs.mat scale train_data test_data
+save signs.mat transfer train_data test_data
