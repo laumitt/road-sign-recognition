@@ -1,11 +1,12 @@
 % code adapted from Laurel's Night 7 (14.5) submission
+% make sure to clear variables before running again (otherwise vector
+% lengths might not match up for error plotting)
 load signs.mat
 
 % other items to use later
-k_list = 1:15:num_pixels; % number of eigenvectors to use
-% k_list = [10]; % simplifying for testing single images
-plot_error = false; % decides whether or not to show error graph
-per_matches = []; % set to empty
+% k_list = 1:5:num_signs; % number of eigenvectors to use
+k_list = [100]; % simplifying for testing single images
+plot_error = true; % decides whether or not to show error graph
 rec = 1; % index for recording error later
 tic;  % start timing
 
@@ -43,12 +44,22 @@ for k = k_list
     rec = rec+1;
 end
 % print final error
-disp("Number of iterations");
-disp(numel(k_list));
-disp("Percent accurate (max)");
-disp(max(per_matches));
-disp("Time per loop (avg)");
-disp(mean(t_in_loop));
+
+% use this section if k_list is long
+% disp("Number of iterations");
+% disp(numel(k_list));
+% disp("Percent accurate (max)");
+% disp(max(per_matches));
+% disp("Time per loop (avg)");
+% disp(mean(t_in_loop));
+
+% use this section if k_list is manageable
+disp("Eigenvectors");
+disp(k_list);
+disp("Percent accurate");
+disp(per_matches);
+disp("Time per loop");
+disp(t_in_loop);
 
 if plot_error == true
     % plot error
@@ -61,4 +72,4 @@ if plot_error == true
     title('Error Analysis');
 end
 
-save results.mat train_r test_r train_c test_c vectors close_index n num_signs
+save results.mat train_m test_m train_c test_c vectors close_index n num_signs

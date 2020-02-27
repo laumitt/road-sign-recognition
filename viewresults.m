@@ -12,14 +12,14 @@ if save_all == false
     fig = figure(r);
     colormap('gray');
     subplot(221);
-    imagesc(reshape(test_r(r,:), [n, n]));
-    title('Testing Image (Original)');
+    imagesc(reshape(test_m(r,:), [n, n]));
+    title('Testing Image (Mean Centered)');
     subplot(222);
     imagesc(reshape(vectors*test_c(r,:).', [n, n]));
     title('Testing Image (Representation)');
     subplot(223);
-    imagesc(reshape(train_r(close_index(r),:), [n, n]));
-    title('Training Image (Original)');
+    imagesc(reshape(train_m(close_index(r),:), [n, n]));
+    title('Training Image (Mean Centered)');
     subplot(224);
     imagesc(reshape(vectors*train_c(close_index(r),:).', [n, n]));
     title('Training Image (Representation)');
