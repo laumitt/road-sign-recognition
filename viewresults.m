@@ -22,7 +22,7 @@ for r = 1:num_signs
     imagesc(reshape(vectors*train_c(close_index(r),:).', [n, n]));
     title('Training Image (Representation)');
     r_name = num2str(r);
-    saveas(fig, r_name, 'jpg');
+    saveas(fig, r_name, 'png');
 end
 
 % % view eigenfaces
