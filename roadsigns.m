@@ -1,24 +1,21 @@
-% load data
+% code adapted from Laurel's Night 7 (14.5) submission
 load signs.mat
 
 % other items to use later
-scale = transfer(1);
-num_pixels = transfer(2);
-num_signs = transfer(3);
 signs = fopen('signs_index.txt');
 labels = fscanf(signs, 'r');
-k_list = 1:5:25; % number of eigenvectors to use
+k_list = 1:5:num_signs; % number of eigenvectors to use
 % k_list = [10]; % simplifying for testing single images
 rec = 1; % index for recording error later
 tic;  % start timing
 
 % set up training data facespace
-train_r = reshape(train_data, [num_signs,(256*scale)^2]); % reshape to pixels x signs
+train_r = train_data.'; % reshape to signs x pixels (signs are row vectors)
 train_m = train_r - mean(train_r); % mean center training data
+test_r = test_data.'; % reshape to signs x pixels (signs are row vectors)
+test_m = test_r - mean(test_r); % mean center test data
 train_nums = 1:num_signs; % placeholder until the text file can be read in
 test_nums = 1:num_signs; % placeholder until the text file can be read in
-test_r = reshape(test_data, [num_signs,(256*scale)^2]); % reshape to pixels x signs
-test_m = test_r - mean(test_r); % mean center test data
 
 % compute eigendecomposition
 R = train_m.' * train_m; % find covariance matrix of pixels of training data
@@ -53,40 +50,13 @@ disp(per_matches);
 disp("Time per loop");
 disp(t_in_loop);
 
-% plot error
-figure(1);
-plot(k_list, per_matches);
-hold on;
-plot(k_list, t_in_loop * 10000);
-legend('Percent Accurate', 'Computation Time (* 1000)', 'Location', 'southeast');
-xlabel('Number of eigenvectors');
-title('Grayfaces Recognition Error Analysis');
+% % plot error
+% figure(1);
+% plot(k_list, per_matches);
+% hold on;
+% plot(k_list, t_in_loop * 10000);
+% legend('Percent Accurate', 'Computation Time (* 1000)', 'Location', 'southeast');
+% xlabel('Number of eigenvectors');
+% title('Error Analysis');
 
-% view versions of one image (original, rep, match, match rep)
-a = 12; % image to show
-figure(2);
-colormap('gray');
-subplot(221);
-imagesc(reshape(test_m(a,:), [64, 64]));
-title('Testing Image (Original)');
-subplot(222);
-imagesc(reshape(vectors*test_c(a,:).', [64, 64]));
-title('Testing Image (Representation)');
-subplot(223);
-imagesc(reshape(train_m(a,:), [64, 64]));
-title('Training Image (Original)');
-subplot(224);
-imagesc(reshape(vectors*train_c(a,:).', [64, 64]));
-title('Training Image (Representation)');
-
-% view eigenfaces
-figure(3);
-colormap('gray');
-subplot(221);
-imagesc(reshape(vectors(:,1), [64, 64]));
-subplot(222);
-imagesc(reshape(vectors(:,2), [64, 64]));
-subplot(223);
-imagesc(reshape(vectors(:,3), [64, 64]));
-subplot(224);
-imagesc(reshape(vectors(:,4), [64, 64]));
+save results.mat train_r test_r train_c test_c vectors close_index n num_signs

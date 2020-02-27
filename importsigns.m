@@ -4,8 +4,8 @@
 
 scale = 0.25;
 num_pixels = (256*scale)^2;
-num_signs = 25;
-transfer = [scale num_pixels num_signs];
+num_signs = 37;
+n = sqrt(num_pixels);
 
 % training data
 train_data = ones(num_pixels,num_signs);
@@ -16,7 +16,7 @@ for img_num = 1:num_signs
 		img = imread(train_file);
         img_gray = (0.2989*img(:,:,1)) + (0.5870*img(:,:,2)) + (0.1140*img(:,:,3));
         img_small = imresize(img_gray, scale);
-        img_reshape = reshape(img_small, [64*64, 1]);
+        img_reshape = reshape(img_small, [num_pixels, 1]);
         for row = 1:num_pixels
             train_data(row, img_num) = img_small(row);
         end
@@ -34,7 +34,7 @@ for img_num = 1:num_signs
 		img = imread(test_file);
         img_gray = (0.2989*img(:,:,1)) + (0.5870*img(:,:,2)) + (0.1140*img(:,:,3));
         img_small = imresize(img_gray, scale);
-        img_reshape = reshape(img_small, [64*64, 1]);
+        img_reshape = reshape(img_small, [num_pixels, 1]);
         for row = 1:num_pixels
             test_data(row, img_num) = img_small(row);
         end
@@ -43,4 +43,4 @@ for img_num = 1:num_signs
     end
 end
 
-save signs.mat transfer train_data test_data
+save signs.mat scale num_pixels num_signs n train_data test_data
