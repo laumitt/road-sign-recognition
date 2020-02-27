@@ -2,10 +2,10 @@
 load signs.mat
 
 % other items to use later
-signs = fopen('signs_index.txt');
-labels = fscanf(signs, 'r');
-k_list = 1:5:num_signs; % number of eigenvectors to use
+k_list = 1:15:num_pixels; % number of eigenvectors to use
 % k_list = [10]; % simplifying for testing single images
+plot_error = false; % decides whether or not to show error graph
+per_matches = []; % set to empty
 rec = 1; % index for recording error later
 tic;  % start timing
 
@@ -27,7 +27,7 @@ for k = k_list
     vectors = V(:,indices); % choose associated eigenvectors
     train_c = train_m * vectors; % represent training signs with chosen vectors
 
-    % recognize faces
+    % recognize signs
     test_c = test_m * vectors; % represent test signs with chosen vectors
     [close_index, distance] = knnsearch(train_c, test_c); % find closest match between test sign and training
 
@@ -38,25 +38,27 @@ for k = k_list
             matches = matches + 1; % count this as a match
         end
     end
-    per_matches(rec) = matches/num_signs * 100; % find percent accurate matches
     t_in_loop(rec) = toc(t_in_loop_start); % record how long each loop takes
+    per_matches(rec) = matches/num_signs * 100; % find percent accurate matches
     rec = rec+1;
 end
 % print final error
-disp("Eigenvectors used");
-disp(k_list);
-disp("Percent accurate");
-disp(per_matches);
-disp("Time per loop");
-disp(t_in_loop);
+disp("Number of iterations");
+disp(numel(k_list));
+disp("Percent accurate (max)");
+disp(max(per_matches));
+disp("Time per loop (avg)");
+disp(mean(t_in_loop));
 
-% % plot error
-% figure(1);
-% plot(k_list, per_matches);
-% hold on;
-% plot(k_list, t_in_loop * 10000);
-% legend('Percent Accurate', 'Computation Time (* 1000)', 'Location', 'southeast');
-% xlabel('Number of eigenvectors');
-% title('Error Analysis');
+if plot_error == true
+    % plot error
+    figure(1);
+    plot(k_list, per_matches);
+    hold on;
+    plot(k_list, t_in_loop * 1000);
+    legend('Percent Accurate', 'Computation Time (ms)', 'Location', 'northwest');
+    xlabel('Number of eigenvectors');
+    title('Error Analysis');
+end
 
 save results.mat train_r test_r train_c test_c vectors close_index n num_signs

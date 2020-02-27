@@ -29,16 +29,16 @@ if save_all == false
         figure(2);
         colormap('gray');
         subplot(221);
-        imagesc(reshape(vectors(:,1), [64, 64]));
+        imagesc(reshape(vectors(:,1), [n, n]));
         title('Eigensign 1');
         subplot(222);
-        imagesc(reshape(vectors(:,2), [64, 64]));
+        imagesc(reshape(vectors(:,2), [n, n]));
         title('Eigensign 2');
         subplot(223);
-        imagesc(reshape(vectors(:,3), [64, 64]));
+        imagesc(reshape(vectors(:,3), [n, n]));
         title('Eigensign 3');
         subplot(224);
-        imagesc(reshape(vectors(:,4), [64, 64]));
+        imagesc(reshape(vectors(:,4), [n, n]));
         title('Eigensign 4');
     end
 else
