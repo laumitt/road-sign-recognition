@@ -15,7 +15,7 @@ train_r = train_data.'; % reshape to signs x pixels (signs are row vectors)
 train_m = train_r - mean(train_r); % mean center training data
 test_r = test_data.'; % reshape to signs x pixels (signs are row vectors)
 test_m = test_r - mean(test_r); % mean center test data
-train_nums = 1:num_signs; % placeholder until the text file can be read in
+train_nums = 1:(num_signs*2); % placeholder until the text file can be read in
 test_nums = 1:num_signs; % placeholder until the text file can be read in
 
 % compute eigendecomposition
@@ -37,6 +37,8 @@ for k = k_list
     for i = 1:num_signs
         if train_nums(close_index(i)) == test_nums(i) % if the indices match
             matches = matches + 1; % count this as a match
+        elseif train_nums(close_index(i)) - num_signs == test_nums(i) % to account for more training data
+            matches = matches + 1;
         end
     end
     t_in_loop(rec) = toc(t_in_loop_start); % record how long each loop takes

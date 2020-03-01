@@ -1,9 +1,9 @@
 load results.mat
 a = 1;
-b = num_signs;
+b = num_signs; % number of test images
 r = round(a + (b-a)*rand()); % random image to show
-save_all = true;
-view_eigenfaces = false;
+save_all = false;
+view_eigensigns = false;
 
 if save_all == false
     % view versions of one image (original, rep, match, match rep)
@@ -24,7 +24,7 @@ if save_all == false
     imagesc(reshape(vectors*train_c(close_index(r),:).', [n, n]));
     title('Training Image (Representation)');
     
-    if view_eigenfaces == true
+    if view_eigensigns == true
         % view eigenfaces
         figure(2);
         colormap('gray');
@@ -42,7 +42,7 @@ if save_all == false
         title('Eigensign 4');
     end
 else
-    for r = 1:num_signs
+    for r = 1:b
         fig = figure(r);
         colormap('gray');
         subplot(221);
