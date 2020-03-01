@@ -4,8 +4,8 @@
 load signs.mat
 
 % other items to use later
-% k_list = 1:5:num_signs; % number of eigenvectors to use
-k_list = [100]; % simplifying for testing single images
+k_list = 1:5:num_signs; % number of eigenvectors to use
+% k_list = [100]; % simplifying for testing single images
 plot_error = true; % decides whether or not to show error graph
 rec = 1; % index for recording error later
 tic;  % start timing

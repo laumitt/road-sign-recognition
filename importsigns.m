@@ -2,9 +2,9 @@
 % https://matlab.fandom.com/wiki/FAQ#How_can_I_process_a_sequence_of_files.3F
 % and https://www.mathworks.com/matlabcentral/answers/77062-how-to-store-images-in-a-single-array-or-matrix
 
-scale = 0.25;
+scale = 0.5;
 num_pixels = (256*scale)^2;
-num_signs = 37;
+num_signs = 43;
 n = sqrt(num_pixels);
 
 % training data

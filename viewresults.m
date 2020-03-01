@@ -2,7 +2,7 @@ load results.mat
 a = 1;
 b = num_signs;
 r = round(a + (b-a)*rand()); % random image to show
-save_all = false;
+save_all = true;
 view_eigenfaces = false;
 
 if save_all == false
@@ -46,13 +46,13 @@ else
         fig = figure(r);
         colormap('gray');
         subplot(221);
-        imagesc(reshape(test_r(r,:), [n, n]));
+        imagesc(reshape(test_m(r,:), [n, n]));
         title('Testing Image (Original)');
         subplot(222);
         imagesc(reshape(vectors*test_c(r,:).', [n, n]));
         title('Testing Image (Representation)');
         subplot(223);
-        imagesc(reshape(train_r(close_index(r),:), [n, n]));
+        imagesc(reshape(train_m(close_index(r),:), [n, n]));
         title('Training Image (Original)');
         subplot(224);
         imagesc(reshape(vectors*train_c(close_index(r),:).', [n, n]));
